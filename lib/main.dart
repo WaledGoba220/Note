@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:note/page/notes_page.dart';
+
+
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  runApp(MyApp());
+}
+
+// ignore: use_key_in_widget_constructors
+class MyApp extends StatelessWidget {
+  // ignore: prefer_const_declarations
+  static final String title = 'Notes SQLite';
+
+  @override
+  Widget build(BuildContext context) => MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: title,
+    themeMode: ThemeMode.dark,
+    theme: ThemeData(
+      primaryColor: Colors.black,
+      scaffoldBackgroundColor: Colors.blueGrey.shade900,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+    ),
+    home: NotesPage(),
+  );
+}
